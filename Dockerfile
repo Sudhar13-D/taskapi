@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 RUN chmod +x mvnw && ./mvnw clean package -DskipTests
 
-# Stage 2: Run the app (this makes the final image very small)
+# Stage 2: Run the app
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
